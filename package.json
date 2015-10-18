@@ -16,8 +16,9 @@
     "supervisor": "~0.9.1",
     "passport-google": "~0.3.0",
     "passport-google-oauth": "~0.2.0",
-    "passport": "~0.3.0",
+    "passport": "~0.2.2",
     "passport-openidconnect": "0.0.1",
-    "express-session": "~1.11.3"
+    "express-session": "~1.11.3",
+    "session": "~0.1.0"
   }
 }
