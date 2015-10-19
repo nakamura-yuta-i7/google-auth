@@ -1,14 +1,17 @@
-var passport = require('passport');
+(function(app) {
+	var passport = require('passport');
 
-passport.serializeUser(function(user, done){
-	console.log( "passport.serializeUser: ", user );
-	done(null, user);
-});
+	passport.serializeUser(function(user, done){
+		console.log( "passport.serializeUser: ", user );
+		done(null, user);
+	});
 
-passport.deserializeUser(function(obj, done){
-	console.log( "passport.deserializeUser: " , obj );
-	done(null, obj);
-});
+	passport.deserializeUser(function(obj, done){
+		console.log( "passport.deserializeUser: " , obj );
+		done(null, obj);
+	});
 
-app.use(passport.initialize());
-app.use(passport.session());
+	app.use(passport.initialize());
+	app.use(passport.session());
+
+})(app);
