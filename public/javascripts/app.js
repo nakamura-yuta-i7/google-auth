@@ -16,11 +16,6 @@
 		console.log(data);
 	});
 	
-	socket.on('news', function (data) {
-		console.log( "socket.on.news socket.id", socket.id );
-		console.log(data);
-	});
-	
 	socket.emit('greeting', {
 		msg: "Hi.",
 	});

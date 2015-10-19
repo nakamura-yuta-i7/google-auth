@@ -29,17 +29,8 @@ io.on('connection', function (socket) {
 	});
 	console.log( __filename, "socket.io connection id:", socket.id );
 	
-	socket.emit('news', {
-		socket_id: socket.id,
-		hello: 'world',
-	});
-	
-	socket.on('my other event', function (data) {
-		console.log(data);
-	});
-	
 	socket.on('greeting', function (data) {
-		socket.emit("greeting", data);
+		io.emit("greeting", data);
 	});
 });
 
