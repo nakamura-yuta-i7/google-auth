@@ -21,5 +21,12 @@
 		console.log(data);
 	});
 	
-	socket.emit('my other event', { my: 'data' });
+	socket.emit('greeting', {
+		msg: "Hi.",
+	});
+	
+	socket.on('greeting', function (data) {
+		console.log( "socket.on.greeting", data );
+		console.log(data);
+	});
 })();
