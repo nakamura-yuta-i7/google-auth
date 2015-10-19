@@ -4,7 +4,8 @@ var passport = require("passport");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	console.log( req.user );
+	console.log( __filename, "req.user:", req.user );
+	console.log( __filename, "req.session:", req.session );
 	var user = []
 	var data = { title: 'Express' };
 	

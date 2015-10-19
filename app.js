@@ -1,11 +1,13 @@
+(function setGlobal() {
+	eval(require("fs").readFileSync("./libs/global_functions.js","utf-8"));
+})();
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('express-session')
-var passport = require('passport');
 
 var app = express();
 
@@ -20,13 +22,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-	secret: 'keyboard cat',
-	resave: true,
-	saveUninitialized: false,
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+
+include("./app.use.session.js");
+include("./app.use.passport.js");
 
 app.use('/', require('./routes/index') );
 app.use('/users', require('./routes/users') );

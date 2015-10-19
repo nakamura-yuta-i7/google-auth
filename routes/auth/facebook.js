@@ -21,16 +21,6 @@ passport.use(new FacebookStrategy({
 		console.log('refreshToken: ', refreshToken);
 		console.log('profile: ', profile);
 		
-		passport.serializeUser(function(user, done){
-			console.log( "passport.serializeUser facebook: ", user );
-			done(null, user);
-		});
-
-		passport.deserializeUser(function(obj, done){
-			console.log( "passport.deserializeUser facebook: " , obj );
-			done(null, obj);
-		});
-		
 		return done(null, profile._json);
 	}
 ));
