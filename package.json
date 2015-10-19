@@ -20,6 +20,8 @@
     "passport-openidconnect": "0.0.1",
     "express-session": "~1.11.3",
     "session": "~0.1.0",
-    "connect": "~3.4.0"
+    "connect": "~3.4.0",
+    "passport-yahoo": "~0.3.0",
+    "passport-facebook": "~2.0.0"
   }
 }

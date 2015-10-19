@@ -15,18 +15,19 @@ passport.use(new OpenidConnectStrategy({
 	console.log('accessToken: ', accessToken);
 	console.log('refreshToken: ', refreshToken);
 	console.log('profile: ', profile);
+
+	passport.serializeUser(function(user, done){
+		console.log( "passport.serializeUser google: ", user );
+		done(null, user);
+	});
+
+	passport.deserializeUser(function(obj, done){
+		console.log( "passport.deserializeUser google: " , obj );
+		done(null, obj);
+	});
+	
 	return done(null, profile._json);
 }));
-
-passport.serializeUser(function(user, done){
-	console.log( "passport.serializeUser: ", user );
-	done(null, user);
-});
-
-passport.deserializeUser(function(obj, done){
-	console.log( "passport.deserializeUser: " , obj );
-	done(null, obj);
-});
 
 
 router.get('/', passport.authenticate('openidconnect'));

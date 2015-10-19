@@ -5,9 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session')
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var authGoogle = require('./routes/auth/google');
 
 var passport = require('passport');
 
@@ -24,13 +21,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.session({ secret: 'keyboard cat' }));
+app.use(session({
+	secret: 'keyboard cat',
+	resave: true,
+	saveUninitialized: false,
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/auth/google', authGoogle);
+app.use('/', require('./routes/index') );
+app.use('/users', require('./routes/users') );
+app.use('/auth/google', require('./routes/auth/google') );
+app.use('/auth/facebook', require('./routes/auth/facebook') );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
