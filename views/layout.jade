@@ -14,6 +14,8 @@ html
 					li
 						if ! loggedin
 							a(href="/login") Login
+						else
+							a(href="/logout") Logout
 		.page-content
 			h1.title #{title}
 		block content

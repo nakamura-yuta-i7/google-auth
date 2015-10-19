@@ -27,4 +27,9 @@ router.get('/login', function(req, res, next) {
 	res.render('index_login', data);
 });
 
+router.get('/logout', function(req, res, next) {
+	req.logout();
+	res.redirect('/');
+});
+
 module.exports = router;
