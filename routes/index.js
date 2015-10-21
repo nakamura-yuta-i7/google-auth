@@ -16,7 +16,6 @@ router.get('/', function(req, res, next) {
 
 router.get('/login', function(req, res, next) {
 	console.log( __filename, "req.user:", req.user );
-	console.log( __filename, "req.session:", req.session );
 	var user = []
 	var data = {
 		siteName: "Oauth Login Demo",
